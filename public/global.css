@@ -1,0 +1,36 @@
+:root {
+  --font: sans-serif;
+}
+
+.dark {
+  --text: #e6f3ef;
+  --background: #060c0a;
+  --header-background: #0e1b17;
+  --card-background: #0e1b17;
+  --primary: #a7d5c9;
+  --secondary: #375171;
+  --accent: #5469ac;
+}
+
+.light {
+  --text: #0c1814;
+  --background: #f1f8f6;
+  --header-background: #c8ebe1;
+  --card-background: #c8ebe1;
+  --primary: #29564a;
+  --secondary: #8da8c8;
+  --accent: #5368ac;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
