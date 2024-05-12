@@ -7,8 +7,8 @@
   import SeasonalAnimeDetails from "./components/SeasonalAnimeDetails.svelte";
 
   const TABS = ["Seasonal Anime", "Currently Watching"];
-  // let activeTab = "Seasonal Anime";
-  let activeTab = "Currently Watching";
+  let activeTab = "Seasonal Anime";
+  // let activeTab = "Currently Watching";
 
   const tabChange = (e) => {
     activeTab = e.detail;

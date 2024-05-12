@@ -1,19 +1,24 @@
 <script>
-  import watchingStore from "../stores/watchingStore";
-
+  import { tweened } from "svelte/motion";
   export let anime;
 
   $: showProgressPercent = Math.floor(
     (100 * anime.nextAiringEpisode.episode) / anime.episodes
   );
   $: userProgressPercent = Math.floor((100 * anime.watched) / anime.episodes);
+
+  // Tweened percentages
+  const tweenedShowProgress = tweened(0);
+  const tweenedUserProgress = tweened(0);
+  $: tweenedShowProgress.set(showProgressPercent);
+  $: tweenedUserProgress.set(userProgressPercent);
 </script>
 
 <div class="progress-bar">
-  <div class="show-progress" style="width: {showProgressPercent}%">
+  <div class="show-progress" style="width: {$tweenedShowProgress}%">
     <span class="episode-count">{anime.nextAiringEpisode.episode}</span>
   </div>
-  <div class="user-progress" style="width: {userProgressPercent}%">
+  <div class="user-progress" style="width: {$tweenedUserProgress}%">
     <span class="episode-count">
       {#if anime.watched}
         {anime.watched}
