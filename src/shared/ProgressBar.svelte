@@ -2,10 +2,14 @@
   import { tweened } from "svelte/motion";
   export let anime;
 
-  $: showProgressPercent = Math.floor(
-    (100 * anime.nextAiringEpisode.episode) / anime.episodes
-  );
-  $: userProgressPercent = Math.floor((100 * anime.watched) / anime.episodes);
+  $: showProgressPercent =
+    anime.episodes !== null
+      ? Math.floor((100 * anime.nextAiringEpisode.episode) / anime.episodes)
+      : 0;
+  $: userProgressPercent =
+    anime.episodes !== null
+      ? Math.floor((100 * anime.watched) / anime.episodes)
+      : Math.floor((100 * anime.watched) / anime.nextAiringEpisode.episode);
 
   // Tweened percentages
   const tweenedShowProgress = tweened(0);
@@ -15,7 +19,12 @@
 </script>
 
 <div class="progress-bar">
-  <div class="show-progress" style="width: {$tweenedShowProgress}%">
+  <div
+    class="show-progress"
+    style="width: {$tweenedShowProgress}%; {anime.episodes === null
+      ? 'display: none'
+      : ''}"
+  >
     <span class="episode-count">{anime.nextAiringEpisode.episode}</span>
   </div>
   <div class="user-progress" style="width: {$tweenedUserProgress}%">
@@ -25,7 +34,13 @@
       {/if}
     </span>
   </div>
-  <span class="episode-count">{anime.episodes}</span>
+  <span class="episode-count">
+    {#if (anime.episodes && anime.watched != anime.episodes) || (!anime.episodes && anime.watched != anime.nextAiringEpisode.episode)}
+      {anime.episodes !== null
+        ? anime.episodes
+        : anime.nextAiringEpisode.episode}
+    {/if}
+  </span>
 </div>
 
 <style>

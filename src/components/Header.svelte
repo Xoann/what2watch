@@ -1,11 +1,13 @@
 <script>
   import { themeStore, toggleTheme } from "../stores/themeStore";
   import { blurStore, toggleBlur } from "../stores/blurStore";
+
+  $: console.log($blurStore);
 </script>
 
 <header class={$themeStore}>
   <div class="header">
-    <h1>What 2 Watch</h1>
+    <h1>AniRadar</h1>
     <div class="buttons">
       <button on:click={toggleTheme}>
         <img

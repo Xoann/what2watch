@@ -52,7 +52,7 @@ export const watchEpisode = (anime) => {
   if (
     (anime.nextAiringEpisode &&
       anime.watched >= anime.nextAiringEpisode.episode) ||
-    anime.watched >= anime.episodes
+    (anime.episodes && anime.watched >= anime.episodes)
   ) {
     return;
   }
