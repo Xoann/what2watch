@@ -143,6 +143,9 @@ async function updateNextEpisodes(list) {
 }
 
 async function updateNextEpisode(anime) {
+  if (!anime.nextAiringEpisode) {
+    return anime;
+  }
   const now = Math.floor(Date.now() / 1000);
 
   if (now > anime.nextAiringEpisode.airingAt) {

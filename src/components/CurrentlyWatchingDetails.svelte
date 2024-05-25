@@ -9,7 +9,10 @@
     unwatchEpisode,
     isWatchingAnime,
   } from "../stores/watchingStore";
+  import { blurStore } from "../stores/blurStore";
   export let anime;
+
+  $: isBlurred = anime.isAdult && $blurStore === "on";
 
   const getDateEnding = (day) => {
     if (day == 1) {
@@ -86,7 +89,11 @@
       <div class="complete"><span>COMPLETE</span></div>
     {/if}
     <div class="cover-image">
-      <img src={anime.coverImage.large} alt="anime cover" />
+      <img
+        src={anime.coverImage.large}
+        alt="anime cover"
+        class={isBlurred ? "blurred" : ""}
+      />
     </div>
     <!-- <div class="anime-details"> -->
     <div class="titles">
@@ -132,6 +139,11 @@
 </Card>
 
 <style>
+  .blurred {
+    filter: blur(10px);
+    transition: filter 300ms;
+  }
+
   .anime {
     display: grid;
     grid-template-columns: repeat(10, 1fr);

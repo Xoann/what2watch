@@ -6,7 +6,7 @@
   import CurrentlyWatchingList from "./components/CurrentlyWatchingList.svelte";
   import SeasonalAnimeDetails from "./components/SeasonalAnimeDetails.svelte";
 
-  const TABS = ["Seasonal Anime", "Currently Watching"];
+  const TABS = ["Seasonal Anime", "Currently Watching", "Calendar"];
   let activeTab = "Seasonal Anime";
   // let activeTab = "Currently Watching";
 
