@@ -9,7 +9,7 @@
   {#await $watchingStore then animes}
     {#if animes.length == 0}
       <div in:fade class="no-anime">
-        <p>Try adding some animes</p>
+        <p>Try adding some animes bozo</p>
       </div>
     {/if}
     {#each animes as anime (anime.id)}
