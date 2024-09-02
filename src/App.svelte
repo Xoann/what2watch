@@ -6,7 +6,7 @@
   import CurrentlyWatchingList from "./components/CurrentlyWatchingList.svelte";
   import SeasonalAnimeDetails from "./components/SeasonalAnimeDetails.svelte";
 
-  const TABS = ["Seasonal Anime", "Currently Watching", "Calendar"];
+  const TABS = ["Seasonal Anime", "Currently Watching"];
   let activeTab = "Seasonal Anime";
   // let activeTab = "Currently Watching";
 
@@ -32,10 +32,11 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--background);
+    overflow-x: hidden;
   }
   .content {
     width: 100%;
-    max-width: 1060px;
+    max-width: 1300px;
     margin: 0px auto;
     padding: 40px;
   }

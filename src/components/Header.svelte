@@ -61,7 +61,6 @@
   header {
     background-color: var(--header-background);
     height: 200px;
-    /* text-align: center; */
   }
 
   .header {
@@ -84,6 +83,9 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   button {
@@ -92,6 +94,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
   }
 
   img {
