@@ -45,17 +45,27 @@
     <input type="text" placeholder="Search anime..." bind:value={searchQuery} />
   </div>
   <div class="search-tools">
-    <select bind:value={formatFilter}>
-      {#each animeFormats as format}
-        <option value={format}>{format}</option>
-      {/each}
-    </select>
+    <div class="search-tool">
+      <div class="tool-type">
+        <p>Filter by:</p>
+      </div>
+      <select bind:value={formatFilter}>
+        {#each animeFormats as format}
+          <option value={format}>{format}</option>
+        {/each}
+      </select>
+    </div>
 
-    <select bind:value={animeSort} on:change={handleSelectSort}>
-      {#each animeSortingFields as sortingField}
-        <option value={sortingField}>{sortingField}</option>
-      {/each}
-    </select>
+    <div class="search-tool">
+      <div class="tool-type">
+        <p>Sort by:</p>
+      </div>
+      <select bind:value={animeSort} on:change={handleSelectSort}>
+        {#each animeSortingFields as sortingField}
+          <option value={sortingField}>{sortingField}</option>
+        {/each}
+      </select>
+    </div>
   </div>
 </div>
 
@@ -76,10 +86,20 @@
     grid-gap: 20px;
   }
 
+  @media (max-width: 1400px) {
+    .seasonal-anime-list {
+      grid-template-columns: 1fr;
+      place-items: center;
+    }
+  }
+
   .search-area {
     width: 100%;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
   .search-bar {
@@ -88,12 +108,30 @@
     height: 60px;
     max-width: 600px;
     margin: 20px auto;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     display: flex;
     border: 4px solid var(--header-background);
     border-radius: 2500px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* overflow: hidden; */
+  }
+
+  .search-tool {
+    display: flex;
+    border: 4px solid var(--header-background);
+    border-radius: 200px;
+    overflow: hidden;
+  }
+
+  .tool-type {
+    padding: 0px 15px;
+  }
+
+  .search-tools {
+    color: var(--text);
+    font-family: var(--font);
+    display: flex;
+    gap: 1rem;
   }
 
   .search-tools select {
@@ -108,11 +146,10 @@
     appearance: none;
     padding: 15px;
     font-weight: bold;
-    border-radius: 0 25px 25px 0;
   }
 
   .search-tools select:focus {
-    border-bottom-right-radius: 0;
+    /* border-bottom-right-radius: 0; */
   }
 
   .search-tools select option {
@@ -124,7 +161,7 @@
   .search-bar input {
     background-color: transparent;
     width: 100%;
-    padding: 10px 35px;
+    padding: 0px 35px;
     height: 100%;
     font-size: 24px;
     color: var(--text);

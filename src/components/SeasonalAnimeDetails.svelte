@@ -67,7 +67,12 @@
     <div class="anime-details">
       <h3>{anime.title.romaji}</h3>
       <h4>{anime.title.english || ""}</h4>
-      <span>Episodes: {anime.episodes || "???"}</span><br />
+      <span
+        >Episodes: {anime.episodes ||
+          (anime.nextAiringEpisode
+            ? `${anime.nextAiringEpisode.episode} (released)`
+            : "???")}</span
+      ><br />
       <span
         >Start Date: {getMonthName(anime.startDate.month)}
         {anime.startDate.day}{getDateEnding(anime.startDate.day)}</span
