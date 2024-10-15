@@ -54,9 +54,19 @@ async function fetchSeasonalAnime(season) {
       }
 
       const result = await response.json();
-      allAnime = allAnime.concat(result.data.Page.media);
+
+      const animeList = result.data.Page.media;
+
+      animeList.forEach((anime) => {
+        if (anime.nextAiringEpisode) {
+          anime.nextAiringEpisode.episode -= 1;
+        }
+      });
+
+      allAnime = allAnime.concat(animeList);
       hasMore = result.data.Page.pageInfo.hasNextPage;
       currentPage++;
+
       if (currentPage == 10) {
         return allAnime;
       }

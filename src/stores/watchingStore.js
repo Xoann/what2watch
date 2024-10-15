@@ -127,7 +127,13 @@ async function getNextAiringEpisode(animeId) {
     }
 
     const result = await response.json();
-    return result.data.Media.nextAiringEpisode;
+    const nextAiringEpisode = result.data.Media.nextAiringEpisode;
+
+    if (nextAiringEpisode) {
+      nextAiringEpisode.episode -= 1;
+    }
+
+    return nextAiringEpisode;
   } catch (error) {
     console.error("Error fetching anime data:", error);
   }
